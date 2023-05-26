@@ -1,0 +1,123 @@
+.list-container {
+  background-color: #f1ece6;
+  border-radius: 10px;
+}
+ul {
+  text-align: center;
+  padding: 10px;
+  list-style: none;
+}
+li {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 0px 12px 0px;
+  text-align: left;
+  vertical-align: middle;
+}
+/* 
+.content {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 6px;
+}
+.content-values {
+  width: 70%;
+}
+
+.content > div {
+  width: 80%;
+
+  padding: 12px 0px;
+
+  border-bottom: 1px solid #76b7cd;
+}
+.content > input[type="checkbox"] {
+  width: 20px;
+}
+
+.content-values {
+  width: 75%;
+}
+.content-buttons {
+  display: flex;
+  justify-content: end;
+  width: 25%;
+}
+.content > input[type="checkbox"] {
+  width: 30px;
+}
+.content-buttons img {
+  flex-shrink: 1;
+}
+div.content.content-buttons {
+  flex-shrink: 2;
+} */
+
+/* Check Box Css */
+input[type="checkbox"] {
+  padding: 10px;
+  align-self: center;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+input[type="checkbox"]:checked {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+}
+.deleteicon {
+  height: 20px;
+  width: 16px;
+  padding-bottom: 3px;
+  align-self: center;
+  color: #d98326;
+}
+
+.clearText {
+  color: #d98326;
+  text-align: right;
+  padding-right: 14px;
+  padding-bottom: 5px;
+}
+/* test */
+li.newlist {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center;
+  gap: 6px;
+}
+.newlist div {
+  flex-grow: 5;
+  border-bottom: 1px solid #76b7cd;
+  padding: 6px 0px;
+  padding-top: 12px;
+}
+.newlist button {
+  padding: auto;
+  /* margin-left: 6px;
+  margin-bottom: 2px; */
+  margin: 3px;
+  margin-left: 6px;
+  flex-shrink: 5;
+  position: relative;
+  flex-grow: 4;
+  background-color: transparent;
+  max-width: 60px;
+  text-transform: uppercase;
+  color: gray;
+  border-color: rgb(200, 194, 194);
+  border-radius: 10px;
+  flex-shrink: 8;
+  box-shadow: 0px 0px white;
+}
+img:hover {
+  cursor: pointer;
+}

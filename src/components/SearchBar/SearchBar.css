@@ -1,0 +1,30 @@
+form {
+  display: flex;
+  justify-content: center;
+  margin: 0px 30px;
+}
+input[type="text"] {
+  flex-grow: 5;
+  outline: none;
+  padding: 8px 30px;
+  font-size: 16px;
+  background-color: #f1ece6;
+  margin: 20px 0px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+.Btnadd {
+  flex-grow: 1;
+  padding: 12px 10px;
+
+  margin: 20px 0px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+
+  background-color: #76b7cd;
+  color: white;
+  font-weight: bold;
+}
+.formcontainer {
+  width: 80%;
+}
