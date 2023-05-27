@@ -1,15 +1,13 @@
 import "./List.css";
-import Delete from "../Shared/delete-icon-png-19.jpg";
 import { useState, useEffect } from "react";
+import { ListItem } from "../ListItem/ListItem";
 
 export function RenderList({ text }) {
   const [list, setList] = useState([]);
-
   useEffect(() => {
     if (text != "") {
       setList([...list, text]);
     }
-    console.log("list", list);
   }, [text]);
 
   const remove = (idx) => {
@@ -21,19 +19,13 @@ export function RenderList({ text }) {
   return (
     <div className="list-container">
       <ul>
+        {/* {list.length < 3 &&
+          list.map((l, i) => (
+            <ListItem text={l} remove={remove} index={i} key={i} />
+          ))} */}
         {list.length > 0 &&
           list.map((l, i) => (
-            <li key={i} className="newlist">
-              <input type="checkbox"></input>
-              <div>{l}</div>
-              <button className="Btnedit">Edit</button>
-
-              <img
-                onClick={(e) => remove(i)}
-                src={Delete}
-                className="deleteicon"
-              ></img>
-            </li>
+            <ListItem text={l} remove={remove} index={i} key={i} />
           ))}
       </ul>
       <p onClick={() => setList([])} className="clearText">

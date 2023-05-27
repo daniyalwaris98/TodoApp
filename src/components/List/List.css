@@ -1,63 +1,28 @@
 .list-container {
   background-color: #f1ece6;
-  border-radius: 10px;
+  border-radius: 30px;
+  overflow: auto;
+  max-height: 300px;
+  margin: 30px 0px;
 }
 ul {
   text-align: center;
-  padding: 10px;
+  padding: 0px 10px;
   list-style: none;
 }
 li {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 0px 0px 12px 0px;
+  padding: 0px 0px 8px 0px;
   text-align: left;
   vertical-align: middle;
 }
-/* 
-.content {
-  display: inline-flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 6px;
-}
-.content-values {
-  width: 70%;
-}
-
-.content > div {
-  width: 80%;
-
-  padding: 12px 0px;
-
-  border-bottom: 1px solid #76b7cd;
-}
-.content > input[type="checkbox"] {
-  width: 20px;
-}
-
-.content-values {
-  width: 75%;
-}
-.content-buttons {
-  display: flex;
-  justify-content: end;
-  width: 25%;
-}
-.content > input[type="checkbox"] {
-  width: 30px;
-}
-.content-buttons img {
-  flex-shrink: 1;
-}
-div.content.content-buttons {
-  flex-shrink: 2;
-} */
 
 /* Check Box Css */
 input[type="checkbox"] {
-  padding: 10px;
+  position: absolute;
+  padding: 9px;
   align-self: center;
   background-color: white;
   border-radius: 50%;
@@ -68,23 +33,20 @@ input[type="checkbox"] {
   outline: none;
   cursor: pointer;
 }
-input[type="checkbox"]:checked {
-  background-color: #66bb6a;
-  border-color: #66bb6a;
-}
+
 .deleteicon {
   height: 20px;
   width: 16px;
   padding-bottom: 3px;
   align-self: center;
-  color: #d98326;
 }
 
 .clearText {
-  color: #d98326;
+  cursor: pointer;
   text-align: right;
   padding-right: 14px;
   padding-bottom: 5px;
+  color: #d98326;
 }
 /* test */
 li.newlist {
@@ -94,12 +56,25 @@ li.newlist {
   align-content: center;
   gap: 6px;
 }
-.newlist div {
+.newlist input[type="text"] {
+  border: none;
+  margin: 0px;
+  padding: 6px 0px;
+}
+.newlist form {
+  margin: 0px;
+  flex-grow: 5;
+  padding: 0px;
+}
+
+.newlist div,
+.newlist input[type="text"] {
   flex-grow: 5;
   border-bottom: 1px solid #76b7cd;
   padding: 6px 0px;
   padding-top: 12px;
 }
+
 .newlist button {
   padding: auto;
   /* margin-left: 6px;

@@ -1,0 +1,51 @@
+.disabled {
+  opacity: 0.4;
+}
+.editinput {
+  flex-grow: 5;
+  outline: none;
+  padding: 8px 30px;
+  font-size: 16px;
+  background-color: #f1ece6;
+  margin: 20px 0px;
+}
+
+.round {
+  display: flex;
+  position: relative;
+  max-width: 25px;
+  border: none !important;
+}
+.round input[type="checkbox"] {
+  bottom: 4px;
+  z-index: 1;
+}
+input[type="checkbox"]:checked {
+  padding: 8px;
+
+  background-color: #fafafa;
+
+  border: 2px solid #d98326;
+}
+input[type="checkbox"]:checked + label {
+  opacity: 1;
+}
+
+.round label {
+  opacity: 0;
+  z-index: 5;
+
+  border-radius: 45%;
+
+  border: 3px solid #d98326;
+  padding: 6.5px 3px;
+  border-top: none;
+  border-left: none;
+  margin-left: 9px;
+  margin-bottom: 4px;
+  transform: rotate(46deg);
+}
+.strike {
+  text-decoration: line-through;
+  color: rgb(224, 78, 78);
+}

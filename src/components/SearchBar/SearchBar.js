@@ -13,11 +13,14 @@ export function SearchBar() {
   };
   const Handlesubmit = () => {
     setText(message);
+    setMessage("");
   };
   return (
     <div className="formcontainer">
       <form onSubmit={formsubmit}>
         <input
+          className="searchbar"
+          value={message}
           onChange={handleChange}
           name="message"
           type="text"
