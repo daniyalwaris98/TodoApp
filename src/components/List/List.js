@@ -18,6 +18,7 @@ export function RenderList({ text }) {
   }, [text]);
 
   const remove = (idx) => {
+    console.log(idx);
     setList((oldValues) => {
       return oldValues.filter((_, i) => i !== idx);
     });

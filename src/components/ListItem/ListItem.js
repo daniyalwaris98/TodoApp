@@ -7,7 +7,7 @@ function ListItem({ text, remove, index, toggleisactive }, ref) {
   const [isclick, setIsClicked] = useState();
   const [ischecked, setChecked] = useState(false);
 
-  const handleClickRemove = (index) => {
+  const handleClickRemove = () => {
     if (ref.current == true) {
       remove(index);
     }
@@ -57,7 +57,7 @@ function ListItem({ text, remove, index, toggleisactive }, ref) {
         Edit
       </button>
       <img
-        onClick={(e) => handleClickRemove(index)}
+        onClick={handleClickRemove}
         src={Delete}
         className="deleteicon"
       ></img>
