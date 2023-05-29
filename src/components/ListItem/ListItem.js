@@ -1,24 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, forwardRef } from "react";
 import Delete from "../Shared/delete-icon-png-19.jpg";
 import "./ListItem.css";
 
-export function ListItem({ text, remove, index }) {
+function ListItem({ text, remove, index, toggleisactive }, ref) {
   const [message, setMessage] = useState(text);
   const [isclick, setIsClicked] = useState();
   const [ischecked, setChecked] = useState(false);
+
   const handleClickRemove = (index) => {
-    remove(index);
+    if (ref.current == true) {
+      remove(index);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (e.target.className == "disabled") {
-      console.log("isdissabled");
-    } else console.log("still working");
-    console.log("thisis working");
+
+    toggleisactive(true);
     setIsClicked(true);
   };
-  console.log(isclick);
   return (
     <li className="newlist">
       <div className="round">
@@ -27,6 +27,7 @@ export function ListItem({ text, remove, index }) {
           id={index}
           type="checkbox"
           className={`checkbox ${isclick == false ? "disabled" : ""}`}
+          autoFocus
         ></input>
         <label className="check-icon" for={index}></label>
       </div>
@@ -39,12 +40,18 @@ export function ListItem({ text, remove, index }) {
             className="editinput"
             value={message}
             type="text"
+            autoFocus
             onChange={(e) => setMessage(e.target.value)}
           ></input>
         </form>
       )}
       <button
-        onClick={(e) => setIsClicked(false)}
+        onClick={(e) => {
+          if (ref.current == true) {
+            setIsClicked(false);
+            toggleisactive(false);
+          }
+        }}
         className={`Btnedit ${isclick == false ? "disabled" : ""}`}
       >
         Edit
@@ -57,3 +64,5 @@ export function ListItem({ text, remove, index }) {
     </li>
   );
 }
+
+export default forwardRef(ListItem);

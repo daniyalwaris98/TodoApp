@@ -3,7 +3,9 @@
   border-radius: 30px;
   overflow: auto;
   max-height: 300px;
-  margin: 30px 0px;
+  min-height: 300px;
+
+  margin: 5px 0px 30px 0px;
 }
 ul {
   text-align: center;
@@ -42,11 +44,17 @@ input[type="checkbox"] {
 }
 
 .clearText {
+  line-height: 26px;
   cursor: pointer;
   text-align: right;
   padding-right: 14px;
-  padding-bottom: 5px;
+  padding-bottom: 0px;
   color: #d98326;
+  margin-bottom: 0px;
+}
+.clearImg {
+  height: 16px;
+  width: 14px;
 }
 /* test */
 li.newlist {

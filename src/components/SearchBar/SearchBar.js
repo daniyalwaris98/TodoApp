@@ -30,6 +30,7 @@ export function SearchBar() {
           ADD
         </button>
       </form>
+
       <RenderList text={text.trim("")} />
     </div>
   );
