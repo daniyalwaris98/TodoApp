@@ -1,17 +1,17 @@
-import { useState, useEffect, useRef, forwardRef } from "react";
+import { useState, forwardRef, useEffect } from "react";
 import Delete from "../Shared/delete-icon-png-19.jpg";
 import "./ListItem.css";
 
 function ListItem({ text, remove, index, toggleisactive }, ref) {
-  const [message, setMessage] = useState(text);
+  const [message, setMessage] = useState();
   const [isclick, setIsClicked] = useState();
   const [ischecked, setChecked] = useState(false);
+  let i = index;
 
-  const handleClickRemove = () => {
-    if (ref.current == true) {
-      remove(index);
-    }
-  };
+  useEffect(() => {
+    setMessage(text);
+  }, [text]);
+  console.log("child", index);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,7 +29,7 @@ function ListItem({ text, remove, index, toggleisactive }, ref) {
           className={`checkbox ${isclick == false ? "disabled" : ""}`}
           autoFocus
         ></input>
-        <label className="check-icon" for={index}></label>
+        <label className="check-icon" htmlFor={index}></label>
       </div>
 
       {isclick !== false ? (
@@ -57,7 +57,9 @@ function ListItem({ text, remove, index, toggleisactive }, ref) {
         Edit
       </button>
       <img
-        onClick={handleClickRemove}
+        onClick={(e) => {
+          remove(i);
+        }}
         src={Delete}
         className="deleteicon"
       ></img>

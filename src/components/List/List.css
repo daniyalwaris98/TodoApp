@@ -104,3 +104,8 @@ li.newlist {
 img:hover {
   cursor: pointer;
 }
+.emptylisttext {
+  font-style: italic;
+  color: gray;
+  line-height: 16px;
+}

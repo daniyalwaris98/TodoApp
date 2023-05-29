@@ -25,6 +25,7 @@ export function SearchBar() {
           name="message"
           type="text"
           placeholder="What Do You Need To Do?"
+          autoFocus
         ></input>
         <button onClick={Handlesubmit} type="submit" className="Btnadd">
           ADD

@@ -18,10 +18,11 @@ export function RenderList({ text }) {
   }, [text]);
 
   const remove = (idx) => {
-    console.log(idx);
-    setList((oldValues) => {
-      return oldValues.filter((_, i) => i !== idx);
-    });
+    if (isactive.current == true) {
+      setList((oldValues) => {
+        return oldValues.filter((o, i) => i != idx);
+      });
+    }
   };
 
   return (
@@ -36,7 +37,7 @@ export function RenderList({ text }) {
       </p>
       <div className="list-container">
         <ul>
-          {list.length > 0 &&
+          {list.length > 0 ? (
             list.map((l, i) => (
               <ListItem
                 text={l}
@@ -46,7 +47,10 @@ export function RenderList({ text }) {
                 toggleisactive={toggleisactive}
                 ref={isactive}
               />
-            ))}
+            ))
+          ) : (
+            <div className="emptylisttext">Start building your Todos...</div>
+          )}
         </ul>
       </div>
     </div>
