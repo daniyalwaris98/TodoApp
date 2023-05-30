@@ -3,8 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import ListItem from "../ListItem/ListItem";
 import ClearAll from "../Shared/Clear complete.png";
 
-export function RenderList({ text }) {
-  const [list, setList] = useState([]);
+export function RenderList({ text, list, setList }) {
   const isactive = useRef(true);
 
   const toggleisactive = (value) => {
