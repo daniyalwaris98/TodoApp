@@ -1,6 +1,7 @@
 import "./SearchBar.css";
 import { RenderList } from "../List/List";
 import { useState, useEffect, useRef } from "react";
+import { Dropdown } from "../Dropdown/Dropdown";
 
 export function SearchBar() {
   const [message, setMessage] = useState("");
@@ -36,6 +37,7 @@ export function SearchBar() {
           placeholder="What Do You Need To Do?"
           autoFocus
         ></input>
+        <Dropdown />
         <button onClick={Handlesubmit} type="submit" className="Btnadd">
           ADD
         </button>
