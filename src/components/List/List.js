@@ -3,23 +3,28 @@ import { useState, useEffect, useRef } from "react";
 import ListItem from "../ListItem/ListItem";
 import ClearAll from "../Shared/Clear complete.png";
 
-export function RenderList({ text, list, setList }) {
+export function RenderList({
+  handleclickchecked,
+  tobeEdited,
+  list,
+  setList,
+  inputForm,
+  status,
+}) {
   const isactive = useRef(true);
 
   const toggleisactive = (value) => {
     isactive.current = value;
   };
-
   useEffect(() => {
-    if (text != "") {
-      setList([...list, text]);
+    if (status == "") {
+      isactive.current = true;
     }
-  }, [text]);
-
+  }, [status, tobeEdited]);
   const remove = (idx) => {
     if (isactive.current == true) {
       setList((oldValues) => {
-        return oldValues.filter((o, i) => i != idx);
+        return oldValues.filter((o, i) => o.id != idx);
       });
     }
   };
@@ -39,12 +44,14 @@ export function RenderList({ text, list, setList }) {
           {list.length > 0 ? (
             list.map((l, i) => (
               <ListItem
-                text={l}
+                single={l}
                 remove={remove}
-                index={i}
+                index={l.id}
                 key={i}
                 toggleisactive={toggleisactive}
                 ref={isactive}
+                inputForm={inputForm}
+                handleclickchecked={handleclickchecked}
               />
             ))
           ) : (

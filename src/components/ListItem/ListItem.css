@@ -49,3 +49,10 @@ input[type="checkbox"]:checked + label {
   text-decoration: line-through;
   color: rgb(224, 78, 78);
 }
+.status {
+  font-style: italic;
+  text-transform: capitalize;
+  text-align: center;
+  flex-shrink: 4;
+  max-width: 100px;
+}

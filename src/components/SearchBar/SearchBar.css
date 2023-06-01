@@ -17,6 +17,7 @@ form {
 }
 .Btnadd {
   flex-grow: 1;
+  cursor: pointer;
   padding: 10px 10px;
   font-size: 14px;
   border: 2px solid gray;
@@ -30,4 +31,15 @@ form {
 }
 .formcontainer {
   width: 85%;
+}
+.error-div {
+  padding-left: 10px;
+  float: left;
+  color: red;
+  text-align: left;
+  font-style: italic;
+  line-height: 6px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: capitalize;
 }
