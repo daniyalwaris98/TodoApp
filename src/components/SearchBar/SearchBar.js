@@ -1,9 +1,13 @@
 import "./SearchBar.css";
 import { RenderList } from "../List/List";
 import { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Add, Modify } from "../Store/Listactions";
 import Dropdown from "../Dropdown/Dropdown";
 
 export function SearchBar() {
+  const listredux = useSelector((state) => state.List);
+  const dispatch = useDispatch();
   const [status, setStatus] = useState("pending");
   const statusChange = useRef("pending");
   const [message, setMessage] = useState("");
@@ -27,21 +31,20 @@ export function SearchBar() {
   const Handlesubmit = () => {
     if (message.trim() === "") setErrormessage("Empty Input**");
     else setErrormessage("");
-
     if (
       message.trim() !== "" &&
       status !== "" &&
       Object.keys(tobeEdited).length <= 0
     ) {
-      const updateList = [
-        ...list,
-        {
+      dispatch(
+        Add({
           id: Math.round(Math.random() * 999),
           content: message,
           status: status,
-        },
-      ];
-      setList(updateList);
+        })
+      );
+
+      // setList(updateList);
       setMessage("");
 
       setStatus("pending");
@@ -51,14 +54,19 @@ export function SearchBar() {
   };
   const handleModify = () => {
     if (message.trim() !== "" && status !== "") {
-      const updateList = [
-        list.map((x) => {
-          if (x.id == tobeEdited[0].id) {
-            return { ...x, content: message, status: statusChange.current };
-          } else return x;
-        }),
-      ];
-      setList(updateList[0]);
+      // const updateList = [
+      //   list.map((x) => {
+      //     if (x.id == tobeEdited[0].id) {
+      //       return { ...x, content: message, status: statusChange.current };
+      //     } else return x;
+      //   }),
+      // ];
+      dispatch(
+        Modify(tobeEdited[0].id, {
+          content: message,
+          status: statusChange.current,
+        })
+      );
       setMessage("");
 
       setStatus("");
@@ -92,7 +100,7 @@ export function SearchBar() {
   }, [message, list]);
 
   function inputForm(id) {
-    if (id == undefined) {
+    if (!id) {
       return (
         <form onSubmit={formsubmit}>
           <input
@@ -116,7 +124,7 @@ export function SearchBar() {
         </form>
       );
     } else {
-      const tobeupdated = list.filter((x) => x.id == id);
+      const tobeupdated = listredux.filter((x) => x.id == id);
       setMessage(tobeupdated[0].content);
       statusChange.current = tobeupdated[0].status;
       setStatus(tobeupdated[0].status);
@@ -129,6 +137,7 @@ export function SearchBar() {
       return <div className="error-div">{errormessage}</div>;
     else return;
   }
+  // console.log(listredux, "list from store");
   return (
     <div className="formcontainer">
       {inputForm()}

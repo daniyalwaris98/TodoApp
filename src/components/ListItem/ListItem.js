@@ -1,11 +1,15 @@
 import { useState, forwardRef, useEffect } from "react";
 import Delete from "../Shared/delete-icon-png-19.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import { Remove } from "../Store/Listactions";
+
 import "./ListItem.css";
 
 function ListItem(
   { handleclickchecked, single, remove, index, toggleisactive, inputForm },
   ref
 ) {
+  const dispatch = useDispatch();
   const [message, setMessage] = useState();
   const [isclick, setIsClicked] = useState(true);
   const [ischecked, setChecked] = useState(false);
@@ -20,7 +24,6 @@ function ListItem(
     if (single.status === "Done") setChecked(true);
     else setChecked(false);
   }, [single]);
-
   const editclick = (e) => {
     if (ref.current == true) {
       setIsClicked(false);
@@ -58,7 +61,10 @@ function ListItem(
       </button>
       <img
         onClick={(e) => {
-          remove(single.id);
+          // remove(single.id);
+          console.log(single.id);
+
+          dispatch(Remove(single.id));
         }}
         src={Delete}
         className="deleteicon"

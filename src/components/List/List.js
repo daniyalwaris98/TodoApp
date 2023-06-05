@@ -2,6 +2,9 @@ import "./List.css";
 import { useState, useEffect, useRef } from "react";
 import ListItem from "../ListItem/ListItem";
 import ClearAll from "../Shared/Clear complete.png";
+import { RemoveAll } from "../Store/Listactions";
+
+import { useSelector, useDispatch } from "react-redux";
 
 export function RenderList({
   handleclickchecked,
@@ -12,10 +15,13 @@ export function RenderList({
   status,
 }) {
   const isactive = useRef(true);
+  const listredux = useSelector((state) => state.List);
+  const dispatch = useDispatch();
 
   const toggleisactive = (value) => {
     isactive.current = value;
   };
+  console.log(isactive.current);
   useEffect(() => {
     if (status == "") {
       isactive.current = true;
@@ -33,7 +39,9 @@ export function RenderList({
     <div>
       <p className="clearText">
         <span
-          onClick={() => (isactive.current == true ? setList([]) : "")}
+          onClick={() =>
+            isactive.current == true ? dispatch(RemoveAll()) : ""
+          }
           className="clearText"
         >
           <img src={ClearAll} className="clearImg"></img> <i>Clear Complete</i>
@@ -41,8 +49,8 @@ export function RenderList({
       </p>
       <div className="list-container">
         <ul>
-          {list.length > 0 ? (
-            list.map((l, i) => (
+          {listredux.length > 0 ? (
+            listredux.map((l, i) => (
               <ListItem
                 single={l}
                 remove={remove}
